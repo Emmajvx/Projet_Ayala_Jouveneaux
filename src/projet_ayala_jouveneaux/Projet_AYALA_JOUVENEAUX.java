@@ -13,8 +13,7 @@ public class Projet_AYALA_JOUVENEAUX {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        "test debut de projet";
-    }
-    
-}
+   public static void main(String[] args) {
+           }
+   
+   }
