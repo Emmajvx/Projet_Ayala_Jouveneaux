@@ -54,6 +54,11 @@ public class GrilleDeJeu {
     }
     }
     
+    public CelluleLumineuse lireCellule(int x, int y) {
+        return matriceCellules[x][y];
+    }
+    /*
+    
     /**
      *permet d'eteindre chaque cellule de la grille en parcourant la grille en lignes et en colonnes
      */

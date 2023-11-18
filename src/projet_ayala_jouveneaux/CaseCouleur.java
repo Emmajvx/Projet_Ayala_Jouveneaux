@@ -37,7 +37,7 @@ public class CaseCouleur extends JButton{
             g.setColor(Color.yellow);
       
         }   
-      g.fillRect(0,0,largeur,hauteur);  
+      g.fillRect(4,4,largeur,hauteur);  
     
 this.setText(celluleLumineuseAssociee.toString());
 }

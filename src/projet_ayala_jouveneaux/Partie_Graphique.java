@@ -24,7 +24,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
         Plateau.setLayout(new GridLayout(nbLignes,nbColonnes));
          for (int i=0; i < nbLignes; i++) {
         for (int j=0; j < nbColonnes; j++ ) {
-       CaseCouleur bouton_cellule = new CaseCouleur( grille.matriceCellules[i][j], 360/nbColonnes,360/nbLignes);
+       CaseCouleur bouton_cellule = new CaseCouleur(grille.lireCellule(i, j), 36,36);
        Plateau.add(bouton_cellule); // ajout au Jpanel PanneauGrille
         
         
@@ -105,7 +105,7 @@ this.revalidate();
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Partie_Graphique(6,6).setVisible(true);
+                new Partie_Graphique(8,8).setVisible(true);
             }
         });
     }
