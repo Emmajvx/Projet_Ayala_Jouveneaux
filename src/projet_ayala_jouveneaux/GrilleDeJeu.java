@@ -13,10 +13,12 @@ import projet_ayala_jouveneaux.CelluleLumineuse;
  *
  * @author ayala
  */
+
 public class GrilleDeJeu {
     CelluleLumineuse[][] matriceCellules;
     private int nbLignes ;
     private int nbColonnes;
+    
    
 
     public int getNbLignes() {
@@ -40,10 +42,12 @@ public class GrilleDeJeu {
      * @param p_nbLignes
      * @param p_nbColonnes
      */
-    public GrilleDeJeu (int p_nbLignes, int p_nbColonnes) {
+    public GrilleDeJeu (int p_nbLignes, int p_nbColonnes, int niveau) {
     nbLignes = p_nbLignes;
     nbColonnes = p_nbColonnes;
+    int level=niveau;
     matriceCellules = new CelluleLumineuse[nbLignes][nbColonnes];
+   
     
     for (int i = 0; i< nbLignes; i++){
         for (int j = 0; j < nbColonnes; j++){
@@ -51,6 +55,12 @@ public class GrilleDeJeu {
             matriceCellules[i][j].eteindreCellule();
         }
        
+    }
+    if (niveau==1){
+        matriceCellules[2][6].activerCellule();
+        matriceCellules[4][6].activerCellule();
+        matriceCellules[2][0].activerCellule();
+        matriceCellules[4][0].activerCellule();
     }
     }
     
