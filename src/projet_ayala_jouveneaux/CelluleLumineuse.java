@@ -24,20 +24,14 @@ public class CelluleLumineuse {
      * Inverse l'etat de la cellule, si elle ?tait allum?, la m?thode l'?teint et inversement
      * 
      */
-    public void activerCellule (int diff){
-        if (diff==1) {
+    public void activerCellule (){
+ 
             if (etat == 1) {
                 etat=2;
             } else {
                 etat=1;
             }
-    } else {
-            if (etat == 1) {
-                etat=2;
-            } else {
-                etat=1;
-            }
-    }
+    
     }
 
     /**
