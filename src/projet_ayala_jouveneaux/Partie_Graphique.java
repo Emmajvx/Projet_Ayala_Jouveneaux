@@ -5,6 +5,7 @@
 package projet_ayala_jouveneaux;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 import javax.swing.JButton;
 
 /**
@@ -14,6 +15,7 @@ import javax.swing.JButton;
 public class Partie_Graphique extends javax.swing.JFrame {
     GrilleDeJeu grille;
     int niveau=0;
+    Cavalier cavalier = new Cavalier(0,0,grille);
     /**
      * Creates new form Partie_Graphique
      */
@@ -42,6 +44,7 @@ this.revalidate();
     public void initialiserPartie () {
         grille.eteindreToutesLesCellules();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
