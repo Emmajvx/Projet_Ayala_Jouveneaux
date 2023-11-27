@@ -15,7 +15,7 @@ public class Cavalier {
     private int positionX;
     private int positionY;
 
-    public Cavalier(int startX, int startY, GrilleDeJeu grille) {
+    public Cavalier(int startX, int startY) {
         this.positionX = startX;
         this.positionY = startY;
     }
@@ -28,4 +28,9 @@ public class Cavalier {
         return positionY;
     }
     
+    public void deplacerCavalier(int newX, int newY) {
+        this.positionX = newX;
+        this.positionY = newY;
+    }
 }
+

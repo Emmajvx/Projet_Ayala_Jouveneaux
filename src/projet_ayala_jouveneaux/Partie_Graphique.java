@@ -17,15 +17,15 @@ import javax.swing.JButton;
 public class Partie_Graphique extends javax.swing.JFrame {
     GrilleDeJeu grille;
     int niveau=0;
-    Cavalier cavalier = new Cavalier(0,0,grille);
+    Cavalier cavalier = new Cavalier(0,0);
     /**
      * Creates new form Partie_Graphique
      */
-    public Partie_Graphique(int nbL,int nbC) {
+     public Partie_Graphique(int nbL,int nbC) {
         initComponents();
         int nbLignes = nbL;
         int nbColonnes = nbC;
-        Cavalier cavalier = new Cavalier(2, 2, grille);
+        Cavalier cavalier = new Cavalier(2, 2);
         niveau+=1;
         this.grille= new GrilleDeJeu(nbLignes,nbColonnes, niveau);
         Plateau.setLayout(new GridLayout(nbLignes,nbColonnes));
@@ -70,7 +70,6 @@ public class Partie_Graphique extends javax.swing.JFrame {
                     // Ajouter le bouton au panneau
                     Plateau.add(bouton_cellule);
                 }
-            
             
             
 Plateau.add(bouton_cellule); 
