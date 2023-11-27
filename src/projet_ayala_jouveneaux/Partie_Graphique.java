@@ -6,6 +6,8 @@ package projet_ayala_jouveneaux;
 
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
@@ -23,24 +25,62 @@ public class Partie_Graphique extends javax.swing.JFrame {
         initComponents();
         int nbLignes = nbL;
         int nbColonnes = nbC;
+        Cavalier cavalier = new Cavalier(2, 2, grille);
         niveau+=1;
         this.grille= new GrilleDeJeu(nbLignes,nbColonnes, niveau);
         Plateau.setLayout(new GridLayout(nbLignes,nbColonnes));
-         for (int i=0; i < nbLignes; i++) {
-        for (int j=0; j < nbColonnes; j++ ) {
-       CaseCouleur bouton_cellule = new CaseCouleur(grille.lireCellule(i, j), 36,36);
-       Plateau.add(bouton_cellule); // ajout au Jpanel PanneauGrille
-        
-        
-     
+         for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                final CelluleLumineuse cellule = grille.lireCellule(i, j);
+
+                int deltaX = Math.abs(i - cavalier.getPositionX());
+                int deltaY = Math.abs(j - cavalier.getPositionY());
+                boolean estDeplacementCavalier = (deltaX == 1 && deltaY == 2) || (deltaX == 2 && deltaY == 1);
+
+                CaseCouleur bouton_cellule = new CaseCouleur(cellule, 36, 36);
+
+                if (estDeplacementCavalier) {
+                    bouton_cellule.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            // Ajouter le code de gestion du clic sur le bouton ici
+                            CaseCouleur boutonClique = (CaseCouleur) e.getSource();
+                            int x = boutonClique.getCoordX();
+                            int y = boutonClique.getCoordY();
+
+                            int deltaX = Math.abs(x - cavalier.getPositionX());
+                            int deltaY = Math.abs(y - cavalier.getPositionY());
+                            boolean estDeplacementCavalier = (deltaX == 1 && deltaY == 2) || (deltaX == 2 && deltaY == 1);
+
+                            if (estDeplacementCavalier) {
+                                CelluleLumineuse cellule = grille.lireCellule(x, y);
+                                if (cellule.estEteint()) {
+                                    cellule.activerCellule();
+                                } else {
+                                    cellule.eteindreCellule();
+                                }
+                                // Actualiser l'affichage ou effectuer d'autres actions si n?cessaire
+                            }
+                        }
+                    });
+
+                    bouton_cellule.setCoordX(i);
+                    bouton_cellule.setCoordY(j);
+
+                    // Ajouter le bouton au panneau
+                    Plateau.add(bouton_cellule);
+                }
+            
+            
+            
 Plateau.add(bouton_cellule); 
-getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20,
-nbColonnes*40, nbLignes*40));
+getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, nbColonnes*40, nbLignes*40));
 this.pack();
 this.revalidate();
 }
 }
     }
+    
     public void initialiserPartie () {
         grille.eteindreToutesLesCellules();
     }
