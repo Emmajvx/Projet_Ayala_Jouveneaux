@@ -6,6 +6,7 @@ package projet_ayala_jouveneaux;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -14,6 +15,7 @@ import java.awt.Image;
 public class Cavalier {
     private int positionX;
     private int positionY;
+    ImageIcon icon = new ImageIcon("images/cavalier1.png");
 
     public Cavalier(int startX, int startY) {
         this.positionX = startX;

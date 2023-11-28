@@ -4,11 +4,15 @@
  */
 package projet_ayala_jouveneaux;
 
+import java.awt.Component;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -17,7 +21,7 @@ import javax.swing.JButton;
 public class Partie_Graphique extends javax.swing.JFrame {
     GrilleDeJeu grille;
     int niveau=0;
-    Cavalier cavalier = new Cavalier(0,0);
+    Cavalier cavalier = new Cavalier(2,2);
     /**
      * Creates new form Partie_Graphique
      */
@@ -25,10 +29,11 @@ public class Partie_Graphique extends javax.swing.JFrame {
         initComponents();
         int nbLignes = nbL;
         int nbColonnes = nbC;
-        Cavalier cavalier = new Cavalier(2, 2);
         niveau+=1;
         this.grille= new GrilleDeJeu(nbLignes,nbColonnes, niveau);
         Plateau.setLayout(new GridLayout(nbLignes,nbColonnes));
+       
+
          for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 final CelluleLumineuse cellule = grille.lireCellule(i, j);
@@ -59,7 +64,8 @@ public class Partie_Graphique extends javax.swing.JFrame {
                                 } else {
                                     cellule.eteindreCellule();
                                 }
-                                // Actualiser l'affichage ou effectuer d'autres actions si n?cessaire
+                                ajouterImage("image/cavalier1.jpg", cavalier.getPositionX(), cavalier.getPositionY());
+                               
                             }
                         }
                     });
@@ -73,15 +79,42 @@ public class Partie_Graphique extends javax.swing.JFrame {
                     Plateau.add(bouton_cellule);
                 }
             
-            
 Plateau.add(bouton_cellule); 
 getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, nbColonnes*40, nbLignes*40));
 this.pack();
 this.revalidate();
 }
-}
+         }
+     }
+         private void mettreAJourImageCavalier() {
+        // Supprimer l'ancienne image du cavalier
+        for (Component component : Plateau.getComponents()) {
+            if (component instanceof JLabel) {
+                Plateau.remove(component);
+            }
+        }
+
+        // Ajouter la nouvelle image du cavalier
+        ajouterImage("image/cavalier1.jpg", cavalier.getPositionX(), cavalier.getPositionY());
     }
-    
+         
+private void ajouterImage(String cheminImage, int positionX, int positionY) {
+    ImageIcon icon = new ImageIcon(cheminImage);
+    Image image = icon.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+    icon = new ImageIcon(image);
+    JLabel labelImage = new JLabel(icon);
+
+    // Utiliser un GridBagConstraints pour placer l'image
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.gridx = positionY;  // Utiliser positionY pour gridx
+    gbc.gridy = positionX;  // Utiliser positionX pour gridy
+
+    Plateau.add(labelImage, gbc);
+
+    // Mettre ? jour l'affichage
+    Plateau.revalidate();
+    Plateau.repaint();
+}
     public void initialiserPartie () {
         grille.eteindreToutesLesCellules();
     }
