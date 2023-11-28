@@ -66,6 +66,8 @@ public class Partie_Graphique extends javax.swing.JFrame {
 
                     bouton_cellule.setCoordX(i);
                     bouton_cellule.setCoordY(j);
+                    
+
 
                     // Ajouter le bouton au panneau
                     Plateau.add(bouton_cellule);
