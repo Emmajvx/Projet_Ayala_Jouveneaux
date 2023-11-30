@@ -52,6 +52,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
                             CaseCouleur boutonClique = (CaseCouleur) e.getSource();
                             int x = boutonClique.getCoordX();
                             int y = boutonClique.getCoordY();
+                           
 
                             int deltaX = Math.abs(x - cavalier.getPositionX());
                             int deltaY = Math.abs(y - cavalier.getPositionY());

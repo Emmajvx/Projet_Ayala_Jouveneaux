@@ -13,8 +13,8 @@ import javax.swing.ImageIcon;
  * @author ayala
  */
 public class Cavalier {
-    private int positionX;
-    private int positionY;
+    int positionX;
+    int positionY;
     ImageIcon icon = new ImageIcon("images/cavalier1.png");
 
     public Cavalier(int startX, int startY) {
