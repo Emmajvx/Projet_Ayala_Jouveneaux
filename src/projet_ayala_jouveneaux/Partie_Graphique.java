@@ -19,75 +19,80 @@ import javax.swing.JLabel;
  * @author ayala
  */
 public class Partie_Graphique extends javax.swing.JFrame {
+
     GrilleDeJeu grille;
-    int niveau=0;
-    Cavalier cavalier = new Cavalier(2,2);
+    int niveau = 0;
+    Cavalier cavalier = new Cavalier(2, 2);
+
     /**
      * Creates new form Partie_Graphique
      */
-     public Partie_Graphique(int nbL,int nbC) {
+    public Partie_Graphique(int nbL, int nbC) {
         initComponents();
         int nbLignes = nbL;
         int nbColonnes = nbC;
-        niveau+=1;
-        this.grille= new GrilleDeJeu(nbLignes,nbColonnes, niveau);
-        Plateau.setLayout(new GridLayout(nbLignes,nbColonnes));
-       
+        niveau += 1;
+        this.grille = new GrilleDeJeu(nbLignes, nbColonnes, niveau);
+        Plateau.setLayout(new GridLayout(nbLignes, nbColonnes));
 
-         for (int i = 0; i < nbLignes; i++) {
-            for (int j = 0; j < nbColonnes; j++) {
-                final CelluleLumineuse cellule = grille.lireCellule(i, j);
+        while (!grille.cellulesToutesEteintes()) {
 
-                int deltaX = Math.abs(i - cavalier.getPositionX());
-                int deltaY = Math.abs(j - cavalier.getPositionY());
-                boolean estDeplacementCavalier = (deltaX == 1 && deltaY == 2) || (deltaX == 2 && deltaY == 1);
+            for (int i = 0; i < nbLignes; i++) {
+                for (int j = 0; j < nbColonnes; j++) {
+                    final CelluleLumineuse cellule = grille.lireCellule(i, j);
+                    int deltaX = Math.abs(i - cavalier.getPositionX());
+                    int deltaY = Math.abs(j - cavalier.getPositionY());
+                    boolean estDeplacementCavalier = (deltaX == 1 && deltaY == 2) || (deltaX == 2 && deltaY == 1);
 
-                CaseCouleur bouton_cellule = new CaseCouleur(cellule, 36, 36);
+                    CaseCouleur bouton_cellule = new CaseCouleur(cellule, 36, 36);
 
-                if (estDeplacementCavalier) {
-                    bouton_cellule.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            // Ajouter le code de gestion du clic sur le bouton ici
-                            CaseCouleur boutonClique = (CaseCouleur) e.getSource();
-                            int x = boutonClique.getCoordX();
-                            int y = boutonClique.getCoordY();
-                           
+                    if (estDeplacementCavalier) {
 
-                            int deltaX = Math.abs(x - cavalier.getPositionX());
-                            int deltaY = Math.abs(y - cavalier.getPositionY());
-                            boolean estDeplacementCavalier = (deltaX == 1 && deltaY == 2) || (deltaX == 2 && deltaY == 1);
+                        bouton_cellule.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                // Ajouter le code de gestion du clic sur le bouton ici
+                                CaseCouleur boutonClique = (CaseCouleur) e.getSource();
+                                int x = boutonClique.getCoordX();
+                                int y = boutonClique.getCoordY();
 
-                            if (estDeplacementCavalier) {
-                                CelluleLumineuse cellule = grille.lireCellule(x, y);
-                                if (cellule.estEteint()) {
-                                    cellule.activerCellule();
-                                } else {
-                                    cellule.eteindreCellule();
+                                int deltaX = Math.abs(x - cavalier.getPositionX());
+                                int deltaY = Math.abs(y - cavalier.getPositionY());
+                                boolean estDeplacementCavalier = (deltaX == 1 && deltaY == 2) || (deltaX == 2 && deltaY == 1);
+
+                                if (estDeplacementCavalier) {
+                                    CelluleLumineuse cellule = grille.lireCellule(x, y);
+                                    if (cellule.estEteint()) {
+                                        cellule.activerCellule();
+                                    } else {
+                                        cellule.eteindreCellule();
+                                    }
+                                    //ajouterImage("image/cavalier1.jpg", cavalier.getPositionX(), cavalier.getPositionY());
+                                    cavalier.deplacerCavalier(x, y);
+                                    System.out.println("Nouvelles coordonn?es du cavalier : " + cavalier.getPositionX() + ", " + cavalier.getPositionY());
+
                                 }
-                                ajouterImage("image/cavalier1.jpg", cavalier.getPositionX(), cavalier.getPositionY());
-                               
+
                             }
-                        }
-                    });
+                        });
+//                        System.out.println("Nouvelles coordonn?es du cavalier : " + cavalier.getPositionX() + ", " + cavalier.getPositionY());
+                        bouton_cellule.setCoordX(i);
+                        bouton_cellule.setCoordY(j);
 
-                    bouton_cellule.setCoordX(i);
-                    bouton_cellule.setCoordY(j);
-                    
+                        // Ajouter le bouton au panneau
+                        Plateau.add(bouton_cellule);
+                    }
 
-
-                    // Ajouter le bouton au panneau
                     Plateau.add(bouton_cellule);
+                    getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, nbColonnes * 40, nbLignes * 40));
+                    this.pack();
+                    this.revalidate();
                 }
-            
-Plateau.add(bouton_cellule); 
-getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, nbColonnes*40, nbLignes*40));
-this.pack();
-this.revalidate();
-}
-         }
-     }
-         private void mettreAJourImageCavalier() {
+            }
+        }
+    }
+
+    private void mettreAJourImageCavalier() {
         // Supprimer l'ancienne image du cavalier
         for (Component component : Plateau.getComponents()) {
             if (component instanceof JLabel) {
@@ -98,28 +103,28 @@ this.revalidate();
         // Ajouter la nouvelle image du cavalier
         ajouterImage("image/cavalier1.jpg", cavalier.getPositionX(), cavalier.getPositionY());
     }
-         
-private void ajouterImage(String cheminImage, int positionX, int positionY) {
-    ImageIcon icon = new ImageIcon(cheminImage);
-    Image image = icon.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-    icon = new ImageIcon(image);
-    JLabel labelImage = new JLabel(icon);
 
-    // Utiliser un GridBagConstraints pour placer l'image
-    GridBagConstraints gbc = new GridBagConstraints();
-    gbc.gridx = positionY;  // Utiliser positionY pour gridx
-    gbc.gridy = positionX;  // Utiliser positionX pour gridy
+    private void ajouterImage(String cheminImage, int positionX, int positionY) {
+        ImageIcon icon = new ImageIcon(cheminImage);
+        Image image = icon.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        icon = new ImageIcon(image);
+        JLabel labelImage = new JLabel(icon);
 
-    Plateau.add(labelImage, gbc);
+        // Utiliser un GridBagConstraints pour placer l'image
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = positionY;  // Utiliser positionY pour gridx
+        gbc.gridy = positionX;  // Utiliser positionX pour gridy
 
-    // Mettre ? jour l'affichage
-    Plateau.revalidate();
-    Plateau.repaint();
-}
-    public void initialiserPartie () {
-        grille.eteindreToutesLesCellules();
+        Plateau.add(labelImage, gbc);
+
+        // Mettre ? jour l'affichage
+        Plateau.revalidate();
+        Plateau.repaint();
     }
 
+    public void initialiserPartie() {
+        grille.eteindreToutesLesCellules();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,7 +159,7 @@ private void ajouterImage(String cheminImage, int positionX, int positionY) {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-        /**
+    /**
      * @param args the command line arguments
      */
     /*
