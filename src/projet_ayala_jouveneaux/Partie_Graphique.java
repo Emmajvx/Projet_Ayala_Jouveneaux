@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package projet_ayala_jouveneaux;
+import projet_ayala_jouveneaux.*;
 
 import java.awt.Component;
 import java.awt.GridBagConstraints;
@@ -21,8 +22,7 @@ import java.util.ArrayList;
  */
 public class Partie_Graphique extends javax.swing.JFrame {
     GrilleDeJeu grille;
-    int niveau = 0;
-    Cavalier cavalier = new Cavalier(2, 2);
+   Cavalier cavalier = new Cavalier(0, 0);
 
     // D?claration de la liste de boutons
     List<CaseCouleur> boutons = new ArrayList<>();
@@ -30,15 +30,32 @@ public class Partie_Graphique extends javax.swing.JFrame {
     /**
      * Creates new form Partie_Graphique
      */
-    public Partie_Graphique(int nbL, int nbC) {
+    public Partie_Graphique(int nbL, int nbC, int level) {
         initComponents();
         int nbLignes = nbL;
         int nbColonnes = nbC;
-        niveau += 1;
+        int niveau =level;
+        System.out.println(niveau);
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes, niveau);
         Plateau.setLayout(new GridLayout(nbLignes, nbColonnes));
+        jLabel1.setText("");
+        jLabel2.setText("");
+        
+        if (niveau==0){
+            cavalier.deplacerCavalier(1, 1);
+            jLabel1.setText("Votre pion se deplace comme un cavalier aux echecs");
+            jLabel2.setText("Appuyez sur la case blanche pour l'etaindre et gagner la partie");
+        }
+        
+        if (niveau==1){
+            cavalier.deplacerCavalier(1, 1);
+        }
+        if (niveau==2){
+            cavalier.deplacerCavalier(4, 3);
+        }
+        
 
-        // Cr?ation de tous les boutons
+        // Creation de tous les boutons
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 CaseCouleur bouton_cellule = new CaseCouleur(grille.lireCellule(i, j), 36, 36);
@@ -49,7 +66,6 @@ public class Partie_Graphique extends javax.swing.JFrame {
                 Plateau.add(bouton_cellule);
             }
         }
-
         // Ajout de l'actionneur pour tous les boutons
         for (CaseCouleur bouton : boutons) {
             bouton.addActionListener(new ActionListener() {
@@ -67,6 +83,9 @@ public class Partie_Graphique extends javax.swing.JFrame {
                     if (estDeplacementCavalier) {
                         CelluleLumineuse cellule = grille.lireCellule(x, y);
                         if (cellule.estEteint()) {
+                            FenetreDefaite f = new FenetreDefaite();
+//                            this.dispose();
+                            f.setVisible(true);
                             cellule.activerCellule();
                         } else {
                             cellule.eteindreCellule();
@@ -74,12 +93,25 @@ public class Partie_Graphique extends javax.swing.JFrame {
                         cavalier.deplacerCavalier(x, y);
                         
                         System.out.println("Nouvelles coordonn?es du cavalier : " + cavalier.getPositionX() + ", " + cavalier.getPositionY());
-                                   
+                        if (niveau==1&&grille.cellulesToutesEteintes()==true){
+                            fenetre2 f = new fenetre2();
+                            Partie_Graphique.this.dispose();
+                            f.setVisible(true);
+                        }
+                        if (niveau==0&&grille.cellulesToutesEteintes()==true){
+                            Partie_Graphique f = new Partie_Graphique(4,4,1);
+//                            this.dispose();
+                            f.setVisible(true);
+                            
+                        }    
             
                        }
                 }
+
+          
             });
         }
+
                     
 
                        getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, nbColonnes * 40, nbLignes * 40));
@@ -133,8 +165,12 @@ public class Partie_Graphique extends javax.swing.JFrame {
     private void initComponents() {
 
         Plateau = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(600, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Plateau.setBackground(new java.awt.Color(0, 0, 0));
@@ -151,10 +187,30 @@ public class Partie_Graphique extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 320, 300));
+        getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 320, 300));
+
+        jButton1.setText("Recommencer");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, -1, -1));
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, -1, -1));
+
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Partie_Graphique f = new Partie_Graphique(4,4,1);
+        f.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,5 +245,8 @@ public class Partie_Graphique extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Plateau;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
