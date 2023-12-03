@@ -35,10 +35,10 @@ public class CaseCouleur extends JButton{
      super.paintComponent(g);
     
         if (celluleLumineuseAssociee.estEteint()) {
-            g.setColor(Color.red);
+            g.setColor(Color.black);
         }
         else  {
-            g.setColor(Color.yellow);
+            g.setColor(Color.white);
       
         }   
       g.fillRect(4,4,largeur,hauteur);  

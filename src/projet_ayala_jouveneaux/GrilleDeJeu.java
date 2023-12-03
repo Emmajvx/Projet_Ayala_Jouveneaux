@@ -56,11 +56,22 @@ public class GrilleDeJeu {
         }
        
     }
-    if (niveau==1){
-        matriceCellules[2][6].activerCellule();
-        matriceCellules[4][6].activerCellule();
-        matriceCellules[2][0].activerCellule();
-        matriceCellules[4][0].activerCellule();
+    if (level==0){
+        matriceCellules[0][3].activerCellule();
+       
+    }
+    if (level==1){
+        matriceCellules[0][3].activerCellule();
+        matriceCellules[2][2].activerCellule();
+        matriceCellules[3][0].activerCellule();
+        
+    }
+    if (level==2){
+        matriceCellules[2][7].activerCellule();
+        matriceCellules[3][5].activerCellule();
+        matriceCellules[3][9].activerCellule();
+        matriceCellules[5][5].activerCellule();
+        matriceCellules[4][7].activerCellule();
     }
     }
     
