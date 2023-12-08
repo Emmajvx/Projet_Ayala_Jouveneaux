@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.util.List;
 import java.util.ArrayList;
+import javax.swing.Timer;
 /**
  *
  * @author ayala
@@ -112,7 +113,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
                             f.setVisible(true);
                             
                         }    
-            
+                   
                        }
                 }
 
@@ -127,37 +128,20 @@ public class Partie_Graphique extends javax.swing.JFrame {
                            this.revalidate();
                 
                 }
-        
+    
+//        chrono = new Timer(1000, new ActionListener() {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            countdown--;
+//                 updateCountdownLabel();
+//                 if (countdown ==  0){
+//                     stopGame();
+//                 }
+//            
+//        }
+//        }
+//                
 
-    private void mettreAJourImageCavalier() {
-        // Supprimer l'ancienne image du cavalier
-        for (Component component : Plateau.getComponents()) {
-            if (component instanceof JLabel) {
-                Plateau.remove(component);
-            }
-        }
-
-        // Ajouter la nouvelle image du cavalier
-        ajouterImage("image/cavalier1.jpg", cavalier.getPositionX(), cavalier.getPositionY());
-    }
-
-    private void ajouterImage(String cheminImage, int positionX, int positionY) {
-        ImageIcon icon = new ImageIcon(cheminImage);
-        Image image = icon.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-        icon = new ImageIcon(image);
-        JLabel labelImage = new JLabel(icon);
-
-        // Utiliser un GridBagConstraints pour placer l'image
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = positionY;  // Utiliser positionY pour gridx
-        gbc.gridy = positionX;  // Utiliser positionX pour gridy
-
-        Plateau.add(labelImage, gbc);
-
-        // Mettre ? jour l'affichage
-        Plateau.revalidate();
-        Plateau.repaint();
-    }
 
     public void initialiserPartie() {
         grille.eteindreToutesLesCellules();
