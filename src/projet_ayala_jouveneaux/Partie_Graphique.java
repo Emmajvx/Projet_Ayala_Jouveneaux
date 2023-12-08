@@ -5,6 +5,7 @@
 package projet_ayala_jouveneaux;
 import projet_ayala_jouveneaux.*;
 
+
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
@@ -91,6 +92,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
                             cellule.eteindreCellule();
                         }
                         cavalier.deplacerCavalier(x, y);
+                        //ajouterImage("image/cavalier1.jpg", cavalier.getPositionX(), cavalier.getPositionY());
                         
                         System.out.println("Nouvelles coordonn?es du cavalier : " + cavalier.getPositionX() + ", " + cavalier.getPositionY());
                         if (niveau==1&&grille.cellulesToutesEteintes()==true){
