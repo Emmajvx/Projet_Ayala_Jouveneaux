@@ -59,6 +59,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Partie_Graphique f = new Partie_Graphique(4,4,1);
         f.setVisible(true);
+        MusicPlayer musique=new MusicPlayer();
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

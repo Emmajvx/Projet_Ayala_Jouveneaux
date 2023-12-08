@@ -24,6 +24,8 @@ import javax.swing.Timer;
  */
 public class Partie_Graphique extends javax.swing.JFrame {
     GrilleDeJeu grille;
+    private Timer timer;
+    private int second;
    Cavalier cavalier = new Cavalier(0, 0);
 
     // D?claration de la liste de boutons
@@ -33,6 +35,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
      * Creates new form Partie_Graphique
      */
     public Partie_Graphique(int nbL, int nbC, int level) {
+//        playMusic();
         initComponents();
         int nbLignes = nbL;
         int nbColonnes = nbC;
@@ -96,7 +99,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
                             cellule.eteindreCellule();
                         }
                         grille.matriceCellules[cavalier.getPositionX()][cavalier.getPositionY()].presenceCavalier = false;
-                        
+                        Plateau.repaint();
                         cavalier.deplacerCavalier(x, y);
                         grille.matriceCellules[x][y].presenceCavalier = true;
                         
@@ -115,13 +118,22 @@ public class Partie_Graphique extends javax.swing.JFrame {
                         }    
                    
                        }
+                    
                 }
 
           
             });
+         
         }
 
-                    
+            second=0;
+            timer=new Timer(1000,new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    incrementerChrono();
+            }
+                    });
+            timer.start();           
 
                        getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, nbColonnes * 40, nbLignes * 40));
                          this.pack();
@@ -129,20 +141,16 @@ public class Partie_Graphique extends javax.swing.JFrame {
                 
                 }
     
-//        chrono = new Timer(1000, new ActionListener() {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            countdown--;
-//                 updateCountdownLabel();
-//                 if (countdown ==  0){
-//                     stopGame();
-//                 }
-//            
-//        }
-//        }
-//                
+                
+                
 
-
+private void incrementerChrono(){
+    second++;
+    int minutes=second/60;
+    int resteSecondes=second%60;
+    String tempsFormat =String.format("%02d:%02d", minutes,resteSecondes);
+    jLabel4.setText(tempsFormat);
+}
     public void initialiserPartie() {
         grille.eteindreToutesLesCellules();
     }
@@ -158,6 +166,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
 
         Plateau = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -189,6 +198,10 @@ public class Partie_Graphique extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, -1, -1));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("\"kkkkkkkk+kj\"");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
 
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, -1, -1));
@@ -246,5 +259,6 @@ public class Partie_Graphique extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
