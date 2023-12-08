@@ -4,6 +4,8 @@
  */
 package projet_ayala_jouveneaux;
 
+import javax.swing.Timer;
+
 /**
  *
  * @author emmaj
@@ -61,6 +63,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         f.setVisible(true);
         MusicPlayer musique=new MusicPlayer();
         this.dispose();
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
