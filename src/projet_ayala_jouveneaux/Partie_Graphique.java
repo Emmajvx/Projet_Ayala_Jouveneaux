@@ -95,7 +95,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
                             cellule.eteindreCellule();
                         }
                         grille.matriceCellules[cavalier.getPositionX()][cavalier.getPositionY()].presenceCavalier = false;
-                       
+                        
                         cavalier.deplacerCavalier(x, y);
                         grille.matriceCellules[x][y].presenceCavalier = true;
                         
@@ -114,10 +114,6 @@ public class Partie_Graphique extends javax.swing.JFrame {
                         }    
             
                        }
-                }
-
-                private void repaint() {
-                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
                 }
 
           
@@ -180,6 +176,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 500));
@@ -192,14 +189,14 @@ public class Partie_Graphique extends javax.swing.JFrame {
         Plateau.setLayout(PlateauLayout);
         PlateauLayout.setHorizontalGroup(
             PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 320, Short.MAX_VALUE)
+            .addGap(0, 360, Short.MAX_VALUE)
         );
         PlateauLayout.setVerticalGroup(
             PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 360, Short.MAX_VALUE)
         );
 
-        getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 320, 300));
+        getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 360, 360));
 
         jButton1.setText("Recommencer");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +211,10 @@ public class Partie_Graphique extends javax.swing.JFrame {
 
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_ayala_jouveneaux/fond3.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 0, 790, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -260,5 +261,6 @@ public class Partie_Graphique extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
