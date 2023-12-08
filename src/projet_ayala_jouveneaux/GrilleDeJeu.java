@@ -15,7 +15,7 @@ import projet_ayala_jouveneaux.CelluleLumineuse;
  */
 
 public class GrilleDeJeu {
-    CelluleLumineuse[][] matriceCellules;
+    public CelluleLumineuse[][] matriceCellules;
     private int nbLignes ;
     private int nbColonnes;
     

@@ -6,6 +6,10 @@ package projet_ayala_jouveneaux;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
 /**
@@ -44,6 +48,20 @@ public class CaseCouleur extends JButton{
       g.fillRect(4,4,largeur,hauteur);  
     
 this.setText(celluleLumineuseAssociee.toString());
+        if (celluleLumineuseAssociee.presenceCavalier == true) {
+            BufferedImage image = null;
+             try {
+                 image = ImageIO.read(new File("./test/image/cavalier1.jpg"));
+             } catch (IOException e){
+                 System.out.println(e.getCause());
+                 e.printStackTrace();
+             }
+            
+            g.fillRect(4, 4, largeur, hauteur);
+             this.setText(celluleLumineuseAssociee.toString());
+            g.drawImage(image,3,3,largeur,hauteur,null);
+        }
+
 }
 // M?thodes pour r?cup?rer les coordonn?es
     public int getCoordX() {

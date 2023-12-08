@@ -11,6 +11,7 @@ package projet_ayala_jouveneaux;
  */
 public class CelluleLumineuse {
     private int etat ;
+    public boolean presenceCavalier = false;
 
     /**
      * Met chaque nouvelle cellule en mode ?teinte

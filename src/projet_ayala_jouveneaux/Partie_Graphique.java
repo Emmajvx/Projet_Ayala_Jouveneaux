@@ -50,9 +50,12 @@ public class Partie_Graphique extends javax.swing.JFrame {
         
         if (niveau==1){
             cavalier.deplacerCavalier(1, 1);
+            grille.matriceCellules[1][1].presenceCavalier = true;
+            
         }
         if (niveau==2){
             cavalier.deplacerCavalier(4, 3);
+            grille.matriceCellules[4][3].presenceCavalier = true;
         }
         
 
@@ -91,8 +94,11 @@ public class Partie_Graphique extends javax.swing.JFrame {
                         } else {
                             cellule.eteindreCellule();
                         }
+                        grille.matriceCellules[cavalier.getPositionX()][cavalier.getPositionY()].presenceCavalier = false;
+                       
                         cavalier.deplacerCavalier(x, y);
-                        //ajouterImage("image/cavalier1.jpg", cavalier.getPositionX(), cavalier.getPositionY());
+                        grille.matriceCellules[x][y].presenceCavalier = true;
+                        
                         
                         System.out.println("Nouvelles coordonn?es du cavalier : " + cavalier.getPositionX() + ", " + cavalier.getPositionY());
                         if (niveau==1&&grille.cellulesToutesEteintes()==true){
@@ -108,6 +114,10 @@ public class Partie_Graphique extends javax.swing.JFrame {
                         }    
             
                        }
+                }
+
+                private void repaint() {
+                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
                 }
 
           
