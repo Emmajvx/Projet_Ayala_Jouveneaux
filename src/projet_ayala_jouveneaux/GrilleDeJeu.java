@@ -73,6 +73,20 @@ public class GrilleDeJeu {
         matriceCellules[5][5].activerCellule();
         matriceCellules[4][7].activerCellule();
     }
+    if (level==3){
+        matriceCellules[7][1].activerCellule();
+        matriceCellules[1][1].activerCellule();
+        matriceCellules[3][1].activerCellule();
+        matriceCellules[5][2].activerCellule();
+        matriceCellules[0][3].activerCellule();
+        matriceCellules[2][3].activerCellule();
+        matriceCellules[5][3].activerCellule();
+        matriceCellules[6][3].activerCellule();
+        matriceCellules[3][4].activerCellule();
+        matriceCellules[4][4].activerCellule();
+        matriceCellules[1][5].activerCellule();
+        matriceCellules[6][5].activerCellule();
+    }
     }
     
     public CelluleLumineuse lireCellule(int x, int y) {

@@ -27,6 +27,8 @@ public class Partie_Graphique extends javax.swing.JFrame {
     private Timer timer;
     private int second;
    Cavalier cavalier = new Cavalier(0, 0);
+   int nbLignes;
+   int niveau;
 
     // D?claration de la liste de boutons
     List<CaseCouleur> boutons = new ArrayList<>();
@@ -37,9 +39,9 @@ public class Partie_Graphique extends javax.swing.JFrame {
     public Partie_Graphique(int nbL, int nbC, int level) {
 //        playMusic();
         initComponents();
-        int nbLignes = nbL;
+        nbLignes = nbL;
         int nbColonnes = nbC;
-        int niveau =level;
+        niveau =level;
         System.out.println(niveau);
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes, niveau);
         Plateau.setLayout(new GridLayout(nbLignes, nbColonnes));
@@ -62,6 +64,10 @@ public class Partie_Graphique extends javax.swing.JFrame {
             grille.matriceCellules[4][3].presenceCavalier = true;
         }
         
+        if (niveau==3){
+            cavalier.deplacerCavalier(9, 0);
+            grille.matriceCellules[9][0].presenceCavalier = true;
+        }
 
         // Creation de tous les boutons
         for (int i = 0; i < nbLignes; i++) {
@@ -105,8 +111,8 @@ public class Partie_Graphique extends javax.swing.JFrame {
                         
                         
                         System.out.println("Nouvelles coordonn?es du cavalier : " + cavalier.getPositionX() + ", " + cavalier.getPositionY());
-                        if (niveau==1&&grille.cellulesToutesEteintes()==true){
-                            fenetre2 f = new fenetre2();
+                        if (niveau==1&&grille.cellulesToutesEteintes()==true || niveau==2&&grille.cellulesToutesEteintes()==true){
+                            fenetre2 f = new fenetre2(2,niveau);
                             Partie_Graphique.this.dispose();
                             f.setVisible(true);
                         }
@@ -142,7 +148,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
                 }
     
                 
-                
+                   
 
 private void incrementerChrono(){
     second++;
@@ -216,7 +222,7 @@ private void incrementerChrono(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Partie_Graphique f = new Partie_Graphique(4,4,1);
+        Partie_Graphique f = new Partie_Graphique(nbLignes,nbLignes,niveau);
         f.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
