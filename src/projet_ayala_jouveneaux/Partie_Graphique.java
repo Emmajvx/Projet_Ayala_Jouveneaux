@@ -200,7 +200,6 @@ private void incrementerChrono(){
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, -1, -1));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("\"kkkkkkkk+kj\"");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
 
         jLabel1.setText("jLabel1");
