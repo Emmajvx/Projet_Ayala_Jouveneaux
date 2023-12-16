@@ -68,6 +68,10 @@ public class Partie_Graphique extends javax.swing.JFrame {
             cavalier.deplacerCavalier(9, 0);
             grille.matriceCellules[9][0].presenceCavalier = true;
         }
+        if (niveau==4){
+            cavalier.deplacerCavalier(9, 6);
+            grille.matriceCellules[9][6].presenceCavalier = true;
+        }
 
         // Creation de tous les boutons
         for (int i = 0; i < nbLignes; i++) {
@@ -111,7 +115,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
                         
                         
                         System.out.println("Nouvelles coordonn?es du cavalier : " + cavalier.getPositionX() + ", " + cavalier.getPositionY());
-                        if (niveau==1&&grille.cellulesToutesEteintes()==true || niveau==2&&grille.cellulesToutesEteintes()==true){
+                        if (niveau==1&&grille.cellulesToutesEteintes()==true || niveau==2&&grille.cellulesToutesEteintes()==true|| niveau==3&&grille.cellulesToutesEteintes()==true){
                             fenetre2 f = new fenetre2(2,niveau);
                             Partie_Graphique.this.dispose();
                             f.setVisible(true);
@@ -130,7 +134,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
           
             });
          
-        }
+        
 
             second=0;
             timer=new Timer(1000,new ActionListener(){
@@ -148,7 +152,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
                 }
     
                 
-                   
+    }
 
 private void incrementerChrono(){
     second++;

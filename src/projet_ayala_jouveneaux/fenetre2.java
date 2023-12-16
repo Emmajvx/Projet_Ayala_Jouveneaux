@@ -19,7 +19,7 @@ public class fenetre2 extends javax.swing.JFrame {
     public fenetre2(int tps,int level) {
          niveau1=level+1;
          temps=tps;
-         if (niveau1==2||niveau1==3){
+         if (niveau1==2||niveau1==3||niveau1==4){
              nbc=10;
          }
 
