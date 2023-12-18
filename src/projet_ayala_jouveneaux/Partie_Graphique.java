@@ -143,14 +143,14 @@ public class Partie_Graphique extends javax.swing.JFrame {
                     incrementerChrono();
             }
                     });
-            timer.start();           
+                  
 
                        getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, nbColonnes * 40, nbLignes * 40));
                          this.pack();
                            this.revalidate();
                 
                 }
-    
+     timer.start();    
                 
     }
 
