@@ -79,7 +79,6 @@ public class Partie_Graphique extends javax.swing.JFrame {
                 CaseCouleur bouton_cellule = new CaseCouleur(grille.lireCellule(i, j), 36, 36);
                 bouton_cellule.setCoordX(i);
                 bouton_cellule.setCoordY(j);
-
                 boutons.add(bouton_cellule);
                 Plateau.add(bouton_cellule);
             }
