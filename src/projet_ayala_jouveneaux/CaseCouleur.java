@@ -25,6 +25,14 @@ public class CaseCouleur extends JButton{
 
 // constructeur (appel? depuis FenetrePrincipale)
 
+    /**
+     * Prend en entr?e la hauteur et la largeur que doit prendre la cellule lumineuse sur notre grille, initialise aussi nos
+     * cellules lumineuse.
+     * @param celluleLumineuseAssociee
+     * @param largeur
+     * @param hauteur
+     */
+
     public CaseCouleur(CelluleLumineuse celluleLumineuseAssociee, int largeur,
             int hauteur) {
         this.largeur = largeur;
@@ -34,6 +42,12 @@ public class CaseCouleur extends JButton{
     }
 // Methode g?rant le dessin de la cellule
 
+    /**
+     * cette m?thode nous permet de colorer nos cellules en noir ou en blanc en fonction de l'?tat de notre cellule, ?teinte 
+     * ou allum?e. 
+     * Elle nous permet ?galement de placer une image d'un cavalier sur la case sur laquelle le cavalier se trouve.
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
      super.paintComponent(g);

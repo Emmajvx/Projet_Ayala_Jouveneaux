@@ -38,9 +38,11 @@ public class GrilleDeJeu {
     }
     
     /**
-     *Cr?e une nouvelle grille de jeu avec un nombre de ligne et de colonne choisit en entr?e 
+     *Cr?e une nouvelle grille de jeu avec un nombre de ligne et de colonne choisit en entree, la m?thode prend ?galement en entr?e
+     * un niveau, on peux alors cr?er nos niveaux. 
      * @param p_nbLignes
      * @param p_nbColonnes
+     * @param niveau 
      */
     public GrilleDeJeu (int p_nbLignes, int p_nbColonnes, int niveau) {
     nbLignes = p_nbLignes;

@@ -15,13 +15,18 @@ import javax.swing.ImageIcon;
 public class Cavalier {
     int positionX;
     int positionY;
-    ImageIcon icon = new ImageIcon("images/cavalier1.png");
-
+    
+    /**
+     * Permet de positionner notre cavalier sur la grille selon les coordonn?es x et y.
+     * @param startX
+     * @param startY
+     */
     public Cavalier(int startX, int startY) {
         this.positionX = startX;
         this.positionY = startY;
     }
-
+ // M?thodes pour r?cuperer les coordoon?es 
+    
     public int getPositionX() {
         return positionX;
     }
@@ -30,6 +35,11 @@ public class Cavalier {
         return positionY;
     }
     
+    /**
+     * Permet de d?placer le cavalier en lui assignant de nouvelles coordonn?es. 
+     * @param newX
+     * @param newY
+     */
     public void deplacerCavalier(int newX, int newY) {
         this.positionX = newX;
         this.positionY = newY;
