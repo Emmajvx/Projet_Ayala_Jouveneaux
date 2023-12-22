@@ -52,7 +52,7 @@ public class FenetreVictoire extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Bravo ! vous avez gagn?");
+        jLabel2.setText("Bravo ! vous avez gagne");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 450, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_ayala_jouveneaux/victoire.2.png"))); // NOI18N

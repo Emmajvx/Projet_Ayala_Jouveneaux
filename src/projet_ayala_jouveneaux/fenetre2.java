@@ -26,7 +26,7 @@ public class fenetre2 extends javax.swing.JFrame {
         jLabel4.setText("Votre temps : "+temps+" secondes");
          niveau1=level+1;
          System.out.println(tp);
-         if (niveau1==2||niveau1==3||niveau1==4){
+         if (niveau1==2||niveau1==3||niveau1==4 ||niveau1==5){
              nbc=10;
          }
 

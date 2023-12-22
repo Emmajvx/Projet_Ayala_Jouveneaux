@@ -33,8 +33,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,12 +79,17 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, -1, -1));
 
+        jButton6.setText("Niveau 5");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, -1, -1));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_ayala_jouveneaux/accueil2.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 500, 500));
-
-        jButton6.setText("Niveau 5");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -123,6 +128,13 @@ Partie_Graphique f = new Partie_Graphique(10,10,2);
 //        MusicPlayer musique=new MusicPlayer();
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Partie_Graphique f = new Partie_Graphique(10,10,5);
+        f.setVisible(true);
+//        MusicPlayer musique=new MusicPlayer();
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

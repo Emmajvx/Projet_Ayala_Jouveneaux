@@ -9,12 +9,21 @@ package projet_ayala_jouveneaux;
  * @author emmaj
  */
 public class FenetreDefaite extends javax.swing.JFrame {
-
+int niveau;
+int temps;
+int nbc;
     /**
      * Creates new form FenetreDefaite
      */
-    public FenetreDefaite() {
+    public FenetreDefaite(int level) {
         initComponents();
+        niveau=level;
+         if (niveau==2||niveau==3||niveau==4 ||niveau==5){
+             nbc=10;
+         }
+         if (niveau==1){
+             nbc=4;
+         }
     }
 
     /**
@@ -29,16 +38,17 @@ public class FenetreDefaite extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Quel dommage !");
+        jLabel1.setText("Essaye encore !");
         jLabel1.setMaximumSize(new java.awt.Dimension(98, 30));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 110, 70));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 210, 70));
 
         jButton1.setText("Recommencer");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -46,7 +56,7 @@ public class FenetreDefaite extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
         jButton2.setText("Quitter");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -55,6 +65,9 @@ public class FenetreDefaite extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, -1));
+
+        jButton3.setText("Retourner a l'accueil");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_ayala_jouveneaux/defaite2.png"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -68,7 +81,7 @@ public class FenetreDefaite extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Partie_Graphique f = new Partie_Graphique(4,4,1);
+        Partie_Graphique f = new Partie_Graphique(4,4,niveau);
         f.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -103,7 +116,7 @@ public class FenetreDefaite extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FenetreDefaite().setVisible(true);
+//                new FenetreDefaite(niveau).setVisible(true);
             }
         });
     }
@@ -111,6 +124,7 @@ public class FenetreDefaite extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

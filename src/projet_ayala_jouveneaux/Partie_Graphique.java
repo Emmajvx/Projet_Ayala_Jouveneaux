@@ -47,12 +47,14 @@ public class Partie_Graphique extends javax.swing.JFrame {
         Plateau.setLayout(new GridLayout(nbLignes, nbColonnes));
         jLabel1.setText("");
         jLabel2.setText("");
+        jLabel5.setText("");
         
         if (niveau==0){
             cavalier.deplacerCavalier(1, 1);
             grille.matriceCellules[1][1].presenceCavalier = true;
             jLabel1.setText("Votre pion se deplace comme un cavalier aux echecs");
-            jLabel2.setText("Appuyez sur la case blanche pour l'etaindre et gagner la partie");
+            jLabel2.setText("Appuyez sur la case blanche pour l'eteindre");
+            jLabel5.setText("et gagner la partie");
         }
         
         if (niveau==1){
@@ -72,6 +74,10 @@ public class Partie_Graphique extends javax.swing.JFrame {
         if (niveau==4){
             cavalier.deplacerCavalier(9, 6);
             grille.matriceCellules[9][6].presenceCavalier = true;
+        }
+        if (niveau==(5)){
+            cavalier.deplacerCavalier(2, 2);
+            grille.matriceCellules[2][2].presenceCavalier = true;
         }
 
         // Creation de tous les boutons
@@ -101,7 +107,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
                     if (estDeplacementCavalier) {
                         CelluleLumineuse cellule = grille.lireCellule(x, y);
                         if (cellule.estEteint()) {
-                            FenetreDefaite f = new FenetreDefaite();
+                            FenetreDefaite f = new FenetreDefaite(niveau);
 //                            this.dispose();
                             f.setVisible(true);
                             cellule.activerCellule();
@@ -115,7 +121,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
                         
                         
                         System.out.println("Nouvelles coordonn?es du cavalier : " + cavalier.getPositionX() + ", " + cavalier.getPositionY());
-                        if (niveau==1&&grille.cellulesToutesEteintes()==true || niveau==2&&grille.cellulesToutesEteintes()==true|| niveau==3&&grille.cellulesToutesEteintes()==true){
+                        if (niveau==1&&grille.cellulesToutesEteintes()==true || niveau==2&&grille.cellulesToutesEteintes()==true|| niveau==3&&grille.cellulesToutesEteintes()==true || niveau==4 &&grille.cellulesToutesEteintes()==true){
                             int totalTimeInSeconds = incrementerChrono();
                             fenetre2 f = new fenetre2(2,niveau,totalTimeInSeconds);
                             Partie_Graphique.this.dispose();
@@ -127,7 +133,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
                             f.setVisible(true);
                             
                         }
-                        if (niveau==4&&grille.cellulesToutesEteintes()==true){
+                        if (niveau==5&&grille.cellulesToutesEteintes()==true){
                             FenetreVictoire f = new FenetreVictoire();
 //                            this.dispose();
                             f.setVisible(true);
@@ -189,16 +195,32 @@ private int incrementerChrono(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         Plateau = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
 
         Plateau.setBackground(new java.awt.Color(0, 0, 0));
         Plateau.setPreferredSize(new java.awt.Dimension(360, 360));
@@ -214,7 +236,7 @@ private int incrementerChrono(){
             .addGap(0, 360, Short.MAX_VALUE)
         );
 
-        getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 360, 360));
+        getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 360, 360));
 
         jButton1.setText("Recommencer");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -226,14 +248,6 @@ private int incrementerChrono(){
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, -1, -1));
-
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_ayala_jouveneaux/fond3.png"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -286,5 +300,6 @@ private int incrementerChrono(){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
