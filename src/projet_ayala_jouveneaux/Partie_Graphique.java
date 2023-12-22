@@ -116,12 +116,19 @@ public class Partie_Graphique extends javax.swing.JFrame {
                         
                         System.out.println("Nouvelles coordonn?es du cavalier : " + cavalier.getPositionX() + ", " + cavalier.getPositionY());
                         if (niveau==1&&grille.cellulesToutesEteintes()==true || niveau==2&&grille.cellulesToutesEteintes()==true|| niveau==3&&grille.cellulesToutesEteintes()==true){
-                            fenetre2 f = new fenetre2(2,niveau);
+                            int totalTimeInSeconds = incrementerChrono();
+                            fenetre2 f = new fenetre2(2,niveau,totalTimeInSeconds);
                             Partie_Graphique.this.dispose();
                             f.setVisible(true);
                         }
                         if (niveau==0&&grille.cellulesToutesEteintes()==true){
                             Partie_Graphique f = new Partie_Graphique(4,4,1);
+//                            this.dispose();
+                            f.setVisible(true);
+                            
+                        }
+                        if (niveau==4&&grille.cellulesToutesEteintes()==true){
+                            FenetreVictoire f = new FenetreVictoire();
 //                            this.dispose();
                             f.setVisible(true);
                             
@@ -160,12 +167,14 @@ private void playMusic() {
     musicPlayer.playMusic();
 }
 
-private void incrementerChrono(){
+private int incrementerChrono(){
     second++;
     int minutes=second/60;
     int resteSecondes=second%60;
     String tempsFormat =String.format("%02d:%02d", minutes,resteSecondes);
     jLabel4.setText(tempsFormat);
+    int totalSeconds = minutes * 60 + resteSecondes;
+    return totalSeconds;
 }
     public void initialiserPartie() {
         grille.eteindreToutesLesCellules();
