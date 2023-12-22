@@ -37,7 +37,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
      * Creates new form Partie_Graphique
      */
     public Partie_Graphique(int nbL, int nbC, int level) {
-//        playMusic();
+        playMusic();
         initComponents();
         nbLignes = nbL;
         int nbColonnes = nbC;
@@ -50,6 +50,7 @@ public class Partie_Graphique extends javax.swing.JFrame {
         
         if (niveau==0){
             cavalier.deplacerCavalier(1, 1);
+            grille.matriceCellules[1][1].presenceCavalier = true;
             jLabel1.setText("Votre pion se deplace comme un cavalier aux echecs");
             jLabel2.setText("Appuyez sur la case blanche pour l'etaindre et gagner la partie");
         }
@@ -152,6 +153,12 @@ public class Partie_Graphique extends javax.swing.JFrame {
      timer.start();    
                 
     }
+    
+private void playMusic() {
+    // Remplacez "chemin/vers/votre/musique.mp3" par le chemin r?el de votre fichier audio
+    MusicPlayer musicPlayer = new MusicPlayer("chemin/vers/votre/musique.mp3");
+    musicPlayer.playMusic();
+}
 
 private void incrementerChrono(){
     second++;
@@ -211,9 +218,11 @@ private void incrementerChrono(){
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, -1, -1));
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
 

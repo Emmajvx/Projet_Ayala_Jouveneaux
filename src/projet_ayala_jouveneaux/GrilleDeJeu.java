@@ -102,7 +102,6 @@ public class GrilleDeJeu {
         matriceCellules[7][3].activerCellule();
         matriceCellules[8][4].activerCellule();
         matriceCellules[4][5].activerCellule();
-        matriceCellules[9][6].activerCellule();
         matriceCellules[3][7].activerCellule();
         matriceCellules[7][7].activerCellule();
         matriceCellules[5][8].activerCellule();

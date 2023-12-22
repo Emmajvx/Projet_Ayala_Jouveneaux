@@ -4,38 +4,37 @@ import javax.swing.*;
 import javax.sound.sampled.*;
 import java.io.File;
 
-public class MusicPlayer extends JFrame {
 
-    public MusicPlayer() {
-        JButton playButton = new JButton("Play Music");
-        playButton.addActionListener(e -> playMusic());
+import javax.sound.sampled.*;
 
-        getContentPane().add(playButton);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 200);
-        setLocationRelativeTo(null);
+public class MusicPlayer {
+    private Clip clip;
 
-        // Appeler la m?thode playMusic() ici pour que la musique d?marre automatiquement
-        playMusic();
-    }
-
-    private void playMusic() {
+    public MusicPlayer(String filePath) {
         try {
-            File audioFile = new File("Test/Musique/ambiant.mp3");
+            File audioFile = new File("./test/Musique/ambiant.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
 
-            Clip clip = AudioSystem.getClip();
+            clip = AudioSystem.getClip();
             clip.open(audioStream);
-
-            clip.start();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new MusicPlayer().setVisible(true);
-        });
+    public void playMusic() {
+        if (clip != null) {
+            clip.start();
+        }
+    }
+
+    public void stopMusic() {
+        if (clip != null && clip.isRunning()) {
+            clip.stop();
+        }
+    }
+
+    public boolean isPlaying() {
+        return clip != null && clip.isRunning();
     }
 }
